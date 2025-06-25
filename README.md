@@ -10,7 +10,7 @@ npm install -g @ionic/cli
 ```
 
 # 1. Clone este repositório
-git clone https://github.com/seu-usuario/seu-projeto.git
+git clone https://github.com/ferrgabe/CrudIonic.git
 
 # 2. Acesse a pasta do projeto
 ```
