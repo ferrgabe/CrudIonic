@@ -1,20 +1,37 @@
-<ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>
-      Blank
-    </ion-title>
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-title>Login</ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Blank</ion-title>
-    </ion-toolbar>
-  </ion-header>
+<ion-content class="ion-padding">
 
-  <div id="container">
-    <strong>Ready to create an app?</strong>
-    <p>Start with Ionic <a target="_blank" rel="noopener noreferrer" href="https://ionicframework.com/docs/components">UI Components</a></p>
+  <div class="login-container">
+    <div class="login-box">
+
+      <!-- FORMS DE LOGIN -->
+      <div *ngIf="!loggedIn">
+        <ion-item>
+          <ion-label position="stacked">Usuário</ion-label>
+          <ion-input [(ngModel)]="username" placeholder="Digite 'admin'"></ion-input>
+        </ion-item>
+
+        <ion-item>
+          <ion-label position="stacked">Senha</ion-label>
+          <ion-input [(ngModel)]="password" type="password" placeholder="Digite 'admin'"></ion-input>
+        </ion-item>
+
+        <ion-button expand="block" class="ion-margin-top" (click)="login()">Entrar</ion-button>
+
+        <p *ngIf="error" class="error-msg">{{ error }}</p>
+      </div>
+
+      <div *ngIf="loggedIn">
+        <p class="welcome-msg">Bem-vindo, {{ username }}!</p>
+        <ion-button expand="block" color="success" (click)="goToCrud()">Ir para Cadastro</ion-button>
+      </div>
+
+    </div>
   </div>
+
 </ion-content>

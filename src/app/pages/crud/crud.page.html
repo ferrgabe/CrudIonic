@@ -1,0 +1,64 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-title>Cadastro de Contato</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+
+  <div class="form-section">
+    <ion-item>
+      <ion-input
+        [(ngModel)]="name"
+        placeholder="Nome completo"
+        label="Nome"
+        labelPlacement="floating"
+      ></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-input
+        [(ngModel)]="phone"
+        placeholder="Telefone (somente números)"
+        label="Telefone"
+        labelPlacement="floating"
+        type="tel"
+        inputmode="numeric"
+        pattern="[0-9]*"
+      ></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-input
+        [(ngModel)]="email"
+        placeholder="exemplo@email.com"
+        label="E-mail"
+        labelPlacement="floating"
+        type="email"
+      ></ion-input>
+    </ion-item>
+
+    <ion-button expand="block" class="ion-margin-top" (click)="addItem()" color="success">
+      {{ editingId ? 'Atualizar' : 'Adicionar' }}
+    </ion-button>
+  </div>
+
+  <ion-list class="ion-margin-top">
+    <ion-item
+      *ngFor="let item of items$ | async"
+      class="item-card"
+      lines="none"
+    >
+      <ion-label>
+        <h2 class="item-name">{{ item.name }}</h2>
+        <p class="item-info">📞 {{ item.phone }}</p>
+        <p class="item-info">✉️ {{ item.email }}</p>
+      </ion-label>
+      <ion-buttons slot="end">
+        <ion-button color="warning" fill="outline" (click)="editItem(item)">Editar</ion-button>
+        <ion-button color="danger" fill="outline" (click)="deleteItem(item.id)">Excluir</ion-button>
+      </ion-buttons>
+    </ion-item>
+  </ion-list>
+
+</ion-content>
